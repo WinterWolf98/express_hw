@@ -1,6 +1,6 @@
 import Express from "express";
 const app = Express()
-const port = 9000
+const port = process.env.X_ZOHO_CATALYST_LISTEN_PORT || 9000;
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
