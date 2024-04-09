@@ -15,29 +15,10 @@ jobs:
     image: hub-image
     steps:
       - echo "Hello"
-  zoho:
-    image: hub-image
-    steps:
-      - echo "World"
-  test:
-    image: hub-image
-    steps:
-      - >-
-        node -e "const delay = (ms) => new Promise(resolve =>
-        setTimeout(resolve, ms)); const printNumbers = async () => { for (let i
-        = 1; i <= 50; i++) { console.log(i); await delay(100); } };
-        printNumbers();"
-  approve:
-    type: approval
-    specification:
-      reviewers:
-        - vipin.kumar+csez_cicd_51@zohotest.com
-      message: Kindly approve this
+      - catalyst deploy appsail --name express --build-path ./ --stack node18 --command "node index.js" -p 16501000000013022
 stages:
-  - name: build
+  - name: deploy
     runner: runner2
-    jobs: []
-  - name: logs
-    runner: runner2
-    jobs: []
+    jobs: 
+      - catalyst
 pipeline-runner: runner1
