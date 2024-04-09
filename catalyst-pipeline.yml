@@ -7,7 +7,7 @@ runners:
 jobs:
   catalyst:
     steps:
-      - echo "token:" << pipeline.env.CATALYST_TOKEN >>
+      - echo "token: " << pipeline.env.CATALYST_TOKEN >>
       - echo "Hello"
       - catalyst deploy appsail --name express --build-path ./ --stack node18 --command "node index.js" -p 16501000000013022 --org 85473008 --verbose
       - echo "done !"
