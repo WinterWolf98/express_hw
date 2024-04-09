@@ -1,0 +1,43 @@
+version: 2.1
+runners:
+  runner1:
+    config-id: 2
+  runner2:
+    config-id: 3
+images:
+  hub-image:
+    image: node:16
+    auth:
+      username: thangaram611
+      password: Catalyst@1
+jobs:
+  catalyst:
+    image: hub-image
+    steps:
+      - echo "Hello"
+  zoho:
+    image: hub-image
+    steps:
+      - echo "World"
+  test:
+    image: hub-image
+    steps:
+      - >-
+        node -e "const delay = (ms) => new Promise(resolve =>
+        setTimeout(resolve, ms)); const printNumbers = async () => { for (let i
+        = 1; i <= 50; i++) { console.log(i); await delay(100); } };
+        printNumbers();"
+  approve:
+    type: approval
+    specification:
+      reviewers:
+        - vipin.kumar+csez_cicd_51@zohotest.com
+      message: Kindly approve this
+stages:
+  - name: build
+    runner: runner2
+    jobs: []
+  - name: logs
+    runner: runner2
+    jobs: []
+pipeline-runner: runner1
