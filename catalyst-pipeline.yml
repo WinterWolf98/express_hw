@@ -4,15 +4,8 @@ runners:
     config-id: 2
   runner2:
     config-id: 3
-images:
-  hub-image:
-    image: node:16
-    auth:
-      username: thangaram611
-      password: Catalyst@1
 jobs:
   catalyst:
-    image: hub-image
     steps:
       - echo "Hello"
       - catalyst deploy appsail --name express --build-path ./ --stack node18 --command "node index.js" -p 16501000000013022
