@@ -8,7 +8,7 @@ jobs:
   catalyst:
     steps:
       - echo "Hello"
-      - catalyst deploy appsail --name express --build-path ./ --stack node18 --command "node index.js" -p 16501000000013022
+      - catalyst deploy appsail --name express --build-path ./ --stack node18 --command "node index.js" -p 16501000000013022 --org 85473008
 stages:
   - name: build
     runner: runner2
